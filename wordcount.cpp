@@ -10,7 +10,7 @@
  *
  *
  * Finally, please indicate approximately how many hours you spent on this:
- * #hours: 
+ * #hours: 1
  */
 
 #include <iostream>
@@ -27,5 +27,39 @@ unsigned long countWords(const string& s, set<string>& wl);
 
 int main()
 {
+	/* IDEA: maybe have set "Words" to contained unique words
+	and "Lines" to contain unique lines*/
+
+	unsigned long numLines=0;
+	unsigned long numWords=0;
+	unsigned long numChar=0;
+	//just containers for the counts
+
+	string line;
+	//initalizing line for while
+	while(getline(cin,line)){
+		if (numLines>0) numChar++;
+		//^accounting for /n as one character
+		//start after first line because no
+		// \n before first line
+		numLines++;
+		//^if this is running at all, there is a line
+		//so count it
+		numChar+=line.size();
+		//quick way
+
+		//numWords+=countWords(line,Words);
+		//need to write a way to count words
+	}
+
+	cout << "\t" << numLines;
+	cout << "\t" << numWords;
+	// NOTE: zero for now, no word counting yet
+	cout << "\t" << numChar << "\n";
+	// NOTE: characters is off by one for some reason
+	// possibly need to count a \n for first line, idk
+
+	// NOTE: need to count unique words and lines
+
 	return 0;
 }
