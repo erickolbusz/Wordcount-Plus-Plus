@@ -46,7 +46,7 @@ int main()
 	unsigned long numLines=0;
 	unsigned long numWords=0;
 	unsigned long numChar=0;
-	set <string> wordList;
+	set <string> uniqueWordList, uniqueLineList;
 	string line;
 	//initalizing line for while
 	while(getline(cin, line)){
@@ -58,13 +58,17 @@ int main()
 		numChar+=line.size();
 		//quick way
 
-		numWords+=countWords(line, wordList);
+		numWords+=countWords(line, uniqueWordList);
 		//need to write a way to count words
+
+		uniqueLineList.insert(line);
 	}
 
 	cout << "\t" << numLines;
 	cout << "\t" << numWords;
-	cout << "\t" << numChar << "\n";
+	cout << "\t" << numChar;
+	cout << "\t" << uniqueWordList.size();
+	cout << "\t" << uniqueLineList.size() << "\n";
 	// NOTE: characters is off by one for some reason
 	// possibly need to count a \n for first line, idk
 
