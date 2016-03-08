@@ -67,8 +67,8 @@ int main()
 	cout << "\t" << numLines;
 	cout << "\t" << numWords;
 	cout << "\t" << numChar;
-	cout << "\t" << uniqueWordList.size();
-	cout << "\t" << uniqueLineList.size() << "\n";
+	cout << "\t" << uniqueLineList.size();
+	cout << "\t" << uniqueWordList.size() << "\n";
 	// NOTE: characters is off by one for some reason
 	// possibly need to count a \n for first line, idk
 
