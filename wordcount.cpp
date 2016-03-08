@@ -26,12 +26,13 @@ using std::set;
 // write this function to help you out with the computation.
 unsigned long countWords(const string& s, set<string>& wl) {
   char * word;
-  unsigned long num;
-  word = strtok(s, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
+  unsigned long num = 0;
+  char * str_s = strdup(s.c_str());
+  word = strtok(str_s, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
   while (word != NULL) {
     num += 1;
     wl.insert(word);
-    word = strtok(s, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
+    word = strtok(NULL, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
   }
   return num;
 }
