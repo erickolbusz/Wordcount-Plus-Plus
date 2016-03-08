@@ -8,6 +8,7 @@
  * YOUR OWN WORK**.
  * References:
  * http://www.cplusplus.com
+ * http://stackoverflow.com/questions/7352099/stdstring-to-char
  *
  * Finally, please indicate approximately how many hours you spent on this:
  * #hours: 1
