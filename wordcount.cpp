@@ -7,12 +7,13 @@
  * NOT mean it is okay to COPY THAT SOURCE.  What you submit here **MUST BE
  * YOUR OWN WORK**.
  * References:
- *
+ * http://www.cplusplus.com
  *
  * Finally, please indicate approximately how many hours you spent on this:
  * #hours: 1
  */
 
+#include <stdio.h>
 #include <iostream>
 using std::cin;
 using std::cout;
@@ -23,7 +24,17 @@ using std::string;
 using std::set;
 
 // write this function to help you out with the computation.
-unsigned long countWords(const string& s, set<string>& wl);
+unsigned long countWords(const string& s, set<string>& wl) {
+  char * word;
+  unsigned long num;
+  word = strtok(s, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
+  while (word != NULL) {
+    num += 1;
+    wl.insert(word);
+    word = strtok(s, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
+  }
+  return num;
+}
 
 int main()
 {
@@ -33,28 +44,24 @@ int main()
 	unsigned long numLines=0;
 	unsigned long numWords=0;
 	unsigned long numChar=0;
-	//just containers for the counts
-
+	set <string> wordList;
 	string line;
 	//initalizing line for while
-	while(getline(cin,line)){
+	while(getline(cin, line)){
 		if (numLines>0) numChar++;
-		//^accounting for /n as one character
-		//start after first line because no
-		// \n before first line
+		//accounting for \n as one character
+		//start after first line because no \n before first line
 		numLines++;
-		//^if this is running at all, there is a line
-		//so count it
+		//if this is running at all there is a line
 		numChar+=line.size();
 		//quick way
 
-		//numWords+=countWords(line,Words);
+		numWords+=countWords(line, wordList);
 		//need to write a way to count words
 	}
 
 	cout << "\t" << numLines;
 	cout << "\t" << numWords;
-	// NOTE: zero for now, no word counting yet
 	cout << "\t" << numChar << "\n";
 	// NOTE: characters is off by one for some reason
 	// possibly need to count a \n for first line, idk
@@ -63,3 +70,5 @@ int main()
 
 	return 0;
 }
+
+
