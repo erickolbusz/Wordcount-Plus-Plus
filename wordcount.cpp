@@ -50,7 +50,7 @@ int main()
 	string line;
 	//initalizing line for while
 	while(getline(cin, line)){
-		if (numLines>0) numChar++;
+		numChar++;
 		//accounting for \n as one character
 		//start after first line because no \n before first line
 		numLines++;
@@ -76,5 +76,3 @@ int main()
 
 	return 0;
 }
-
-
