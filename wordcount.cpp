@@ -24,25 +24,21 @@ using std::string;
 #include <set>
 using std::set;
 
-// write this function to help you out with the computation.
 unsigned long countWords(const string& s, set<string>& wl) {
   char * word;
   unsigned long num = 0;
   char * str_s = strdup(s.c_str());
-  word = strtok(str_s, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
+  word = strtok(str_s, " ,.'\";:-+/?!@#$%^&*()[]{}<>\t");
   while (word != NULL) {
     num += 1;
     wl.insert(word);
-    word = strtok(NULL, " ,.'\";:-+/?!@#$%^&*()[]{}<>");
+    word = strtok(NULL, " ,.'\";:-+/?!@#$%^&*()[]{}<>\t");
   }
   return num;
 }
 
 int main()
 {
-	/* IDEA: maybe have set "Words" to contained unique words
-	and "Lines" to contain unique lines*/
-
 	unsigned long numLines=0;
 	unsigned long numWords=0;
 	unsigned long numChar=0;
@@ -59,8 +55,6 @@ int main()
 		//quick way
 
 		numWords+=countWords(line, uniqueWordList);
-		//need to write a way to count words
-
 		uniqueLineList.insert(line);
 	}
 
@@ -69,10 +63,5 @@ int main()
 	cout << "\t" << numChar;
 	cout << "\t" << uniqueLineList.size();
 	cout << "\t" << uniqueWordList.size() << "\n";
-	// NOTE: characters is off by one for some reason
-	// possibly need to count a \n for first line, idk
-
-	// NOTE: need to count unique words and lines
-
 	return 0;
 }
